@@ -15,12 +15,16 @@ impl host_exports::host::Host for HostExports {
         &mut self,
         request: host_exports::host::Httprequest<'_>,
     ) -> host_exports::host::Httpresponse {
-        panic!("Not implemented");
+        let resp = reqwest::blocking::get(request.path)
+            .unwrap()
+            .text()
+            .unwrap();
+        host_exports::host::Httpresponse { data: resp }
     }
 }
 
 struct Context<I, E> {
-    wasi: wasmtime_wasi::WasiCtx,
+    // wasi: wasmtime_wasi::WasiCtx,
     imports: I,
     exports: E,
 }
@@ -40,7 +44,7 @@ fn main() {
     let mut store = Store::new(
         &engine,
         Context {
-            wasi: default_wasi(),
+            // wasi: default_wasi(),
             imports: HostExports {},
             exports: guest_imports::guest::GuestData {},
         },
@@ -59,8 +63,8 @@ fn main() {
     println!("{}", resp);
 }
 
-fn default_wasi() -> wasmtime_wasi::WasiCtx {
-    wasmtime_wasi::sync::WasiCtxBuilder::new()
-        .inherit_stdio()
-        .build()
-}
+// fn default_wasi() -> wasmtime_wasi::WasiCtx {
+//     wasmtime_wasi::sync::WasiCtxBuilder::new()
+//         .inherit_stdio()
+//         .build()
+// }

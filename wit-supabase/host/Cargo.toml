@@ -12,3 +12,4 @@ wit-bindgen-host-wasmtime-rust = { git = "https://github.com/bytecodealliance/wi
 #wasmtime-wasi = "*"
 wasmtime-wasi = "0.39.1"
 wasi-common = "*"
+reqwest = { version = "0.11.11", features = ["blocking"] }
