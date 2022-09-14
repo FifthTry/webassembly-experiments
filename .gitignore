@@ -1,4 +1,6 @@
 /target
 hello-wasm/target/
-hello-as/node_modules/
+**/target/
+**/node_modules/
+wit_bindgen/target/
 **/.vscode

@@ -1,0 +1,16 @@
+[package]
+name = "host"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "*"
+# wit-bindgen-wasmtime = { path = "../../wit-bindgen/crates/host-wasmtime-rust" }
+wit-bindgen-host-wasmtime-rust = { git = "https://github.com/bytecodealliance/wit-bindgen.git" }
+wit-bindgen-gen-host-wasmtime-rust = { git = "https://github.com/bytecodealliance/wit-bindgen.git" }
+#wasmtime-wasi = "*"
+wasmtime-wasi = "0.39.1"
+wasi-common = "*"
+# wasi = "0.11.0+wasi-snapshot-preview1"
