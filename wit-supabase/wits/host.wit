@@ -1,0 +1,11 @@
+record httpresponse {
+    data: string,
+}
+
+record httprequest {
+    path: string,
+    method: string
+}
+
+
+http: func(request: httprequest) -> httpresponse
